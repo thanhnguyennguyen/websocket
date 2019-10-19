@@ -31,10 +31,12 @@ func reader(conn *websocket.Conn) {
 		// print out that message for clarity
 		fmt.Println(string(p))
 
-		if err := conn.WriteMessage(messageType, p); err != nil {
+		if err := conn.WriteMessage(messageType, []byte("Hello client, I just received your message")); err != nil {
 			log.Println(err)
 			return
 		}
+
+		fmt.Print("done", messageType)
 
 	}
 }
